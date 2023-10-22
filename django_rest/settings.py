@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'rest_app',
     'my_app',
+    'normal_django_app',
 ]
 
 MIDDLEWARE = [

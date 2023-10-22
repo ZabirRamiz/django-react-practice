@@ -17,21 +17,17 @@ from rest_framework.decorators import api_view
 @api_view(["GET",'POST'])
 def show_all(request):
     if request.method == "GET":
-        query = 'select * from my_app_my_table'
+        # query = 'select * from my_app_my_table'
+        # my_table_var = my_table.objects.raw(query)
+        # my_table_serializer = serialize('json',my_table_var)
+        # return JsonResponse(my_table_serializer, safe=False)
 
-        my_table_var = my_table.objects.raw(query)
-
-
+        my_table_var = my_table.objects.all()
+        my_table_serializer = MySerializer(my_table_var, many = True)
+        return JsonResponse(my_table_serializer.data, safe=False)
         
-        my_table_serialzer = serialize('json',my_table_var)
-        # my_table_serialzer = MySerializer(my_table_var)
-        # my_table_serialzer = serialize(my_table_var)
+        
 
-        # my_table_serialzer = my_table_serialzer.replace('f{\}', '')
-        print(my_table_var)
-        print("----------------------------")
-        print(my_table_serialzer)
-        return JsonResponse(my_table_serialzer, safe=False)
 
     elif request.method == "POST":
         query = "insert into my_app_my_table ('name','age') values (%s,%s)"
