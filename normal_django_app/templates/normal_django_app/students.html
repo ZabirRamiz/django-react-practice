@@ -8,6 +8,7 @@
 <body>
     <form action="/show_student", method="POST">
         {% csrf_token %}
+        
         {{form}}
         <button type="submit">submit</button>
     </form>
