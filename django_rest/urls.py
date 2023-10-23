@@ -18,16 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 
 from my_app import views
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
+from last_app.views import somethingViewset,whoViewset
 
-router = routers.DefaultRouter()
-router.register(
-    'show', views.show_all, 'show'
-)
+router = DefaultRouter()
+router.register('something', somethingViewset)
+router.register('who', whoViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include("rest_app.urls")),
+    path('last_api/', include(router.urls)),
+
+    path('rest/', include("rest_app.urls")),
     path('my/', include("my_app.urls")),
     path('normal/', include('normal_django_app.urls')),
+    path('last_app/',include('last_app.urls')),
 ]
