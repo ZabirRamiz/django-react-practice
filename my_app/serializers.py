@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from . import models
+from .models import *
 
 class MySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.my_table
+        model = my_table
         fields = [
             'name',
             'age'
