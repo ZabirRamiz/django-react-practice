@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from my_app import views
 from rest_framework.routers import DefaultRouter
-from last_app.views import somethingViewset,whoViewset
+from last_app.views import somethingViewset,whoViewset,nothing
 
 router = DefaultRouter()
 router.register('something', somethingViewset)
@@ -33,4 +33,5 @@ urlpatterns = [
     path('my/', include("my_app.urls")),
     path('normal/', include('normal_django_app.urls')),
     path('last_app/',include('last_app.urls')),
+    # path('last_app/comere',nothing),
 ]
